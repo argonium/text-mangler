@@ -1,0 +1,117 @@
+<html>
+<head><title>Text Mangler</title></head>
+<body>
+<center><b>Text Mangler</b></center>
+<br>
+<p>The Text Mangler is a desktop application, written in Java, that
+allows a user to perform operations on rows of data.  You specify
+the input data and a pattern, and the program applies the pattern
+to each row of input data in order to generate the output.</p>
+
+<p>Each row of input data is composed of a set of fields, typically
+separated by a comma.  For example, if the input data is:
+
+<pre>
+   Bill,Cindy,David
+   Sue,Cathy,Jim
+</pre>
+
+and the pattern is:
+
+<pre>
+   $1 and $2 know $3
+</pre>
+
+then the output is:
+
+<pre>
+   Bill and Cindy know David
+   Sue and Cathy know Jim
+</pre>
+</p>
+
+<p>There is a special variable that refers to the current line
+number from the input data.  The variable is <b>$Row</b>.  By default,
+its initial value and increment value are both 1, although
+that can be modified (see below).</p>
+
+<p>The application supports functions for field references (such
+as $1).  These functions are <b>$upper()</b>, <b>$lower()</b> and
+<b>$title()</b>.  These functions will change the case of their
+argument to, respectively, uppercase, lowercase and titlecase
+(only the first letter of each word is made uppercase). An
+example is <b>$upper($1)</b>.</p>
+
+<p>You can include <b>comments</b> in the pattern.  Comments are
+not processed by the application, and not included in the output.
+To mark a line as a comment, start the line with <b>$//</b>.</p>
+
+<p><b>Conditionals</b> are also supported.  The supported
+statements are <b>$if</b>, <b>$elseif</b>, <b>$else</b> and
+<b>$endif</b>.  The conditional statement can either be of
+the format <b>&quot;$Row [op] [#]&quot;</b> or <b>&quot;[string]
+[op] [string]&quot;</b>.  Either string can be either a
+literal, such as &quot;Sam&quot;, or a field reference, such as $1.
+The supported operators are listed below.  The supported operators
+for string comparisons and numeric comparisons are identical.  The
+$if and $elseif statements require a condition argument, such as
+<b>&quot;$if $Row = 5&quot;</b> or <b>&quot;$elseif
+$1=&quot;Bob&quot;&quot;</b>.  An if-block can include as many
+$elseif statements as you like.</p>
+
+<p>The supported conditional operators are:</p>
+
+<p>
+<table border=2 align="center">
+<tr align="center"><th>Operator(s)</th><th>Function</th></tr>
+<tr align="center"><td>=, ==</td><td>Equal</td></tr>
+<tr align="center"><td>!=, &lt;&gt;</td><td>Not equal</td></tr>
+<tr align="center"><td>&lt;</td><td>Less than</td></tr>
+<tr align="center"><td>&lt;=</td><td>Less than or equal</td></tr>
+<tr align="center"><td>&gt;</td><td>Greater than</td></tr>
+<tr align="center"><td>&gt;=</td><td>Greater than or equal</td></tr>
+</table>
+</p>
+
+<p>To see a demonstration of all of the above, change the pattern
+in the drop-down listbox to <b>&quot;Demo&quot;</b>.</p>
+
+<p>The Options tab has several configuration options available to
+the user:
+
+<ul>
+<li><b>Trim each field</b> - Remove leading and trailing spaces and control charactes</li>
+<li><b>Ignore first row</b> - Whether to ignore the first row</li>
+<li><b>Column delimiters</b> - List of characters that can be a column delimiter in a
+       row; any character in this field will be considered a column delimiter</li>
+<li><b>Row delimiters</b> - List of characters that can be a row delimiter;
+       any character in this field will be considered a row delimiter</li>
+<li><b>Code symbol prefix</b> - The string that prefaces each field reference (e.g.,
+       $1, $Row), required</li>
+<li><b>Code symbol suffix</b> - The string that follows each field reference (e.g.,
+       $1, $Row), not required</li>
+<li><b>$Row initial value</b> - The value to initialize $Row to (for the first row)</li>
+<li><b>$Row increment value</b> - The amount to increment $Row by for each row</li>
+</ul>
+
+The code symbol prefix and suffix only apply to field references (such as $1)
+and $Row, not to the functions (such as $upper()) or the conditionals (such as $if).</p>
+
+<p>The drop-down listbox of pattern choices can be modified by editing
+the <b>mangler.ini</b> file.  To add a pattern, add a section with the
+pattern name you want to appear in the drop-down listbox.  In that section,
+add the line <b>&quot;Lines=[#]&quot;</b>, with Lines set to the number
+of pattern lines in the section.  Then, add the pattern lines to the
+section, with each line of the format <b>&quot;Line[#]=[string]&quot;</b>.
+So, if the pattern is five lines, the first line would be &quot;Lines=5&quot;,
+followed by five lines, starting with &quot;Line1=[string]&quot;,
+&quot;Line2=[string]&quot;, &quot;Line3=[string]&quot;, &quot;Line4=[string]&quot;
+and &quot;Line5=[string]&quot;, where [string] would be the pattern string
+for each line.  For examples, see the mangler.ini file.</p>
+
+<p>Part of the code is copyright JGoodies Karsten Lentzsch.</p>
+
+<br>
+
+</body>
+</html>
