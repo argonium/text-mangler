@@ -38,13 +38,14 @@ Conditionals are also supported. The supported statements are $if, $elseif, $els
 
 The supported conditional operators are:
 
-Operator(s)	Function
-=, ==	Equal
-!=, <>	Not equal
-<	Less than
-<=	Less than or equal
->	Greater than
->=	Greater than or equal
+Operator(s) |	Function
+--- | ---
+=, == | Equal
+!=, <> |	Not equal
+< |	Less than
+<= |	Less than or equal
+\> |	Greater than
+\>= |	Greater than or equal
 
 To see a demonstration of all of the above, change the pattern in the drop-down listbox to "Demo".
 
