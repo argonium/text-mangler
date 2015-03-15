@@ -1,6 +1,8 @@
 # Text Mangler
 The Text Mangler is a desktop application, written in Java, that allows a user to perform operations on rows of data. You specify the input data and a pattern, and the program applies the pattern to each row of input data in order to generate the output.
 
+![Text Mangler](http://argonium.github.io/tm.png)
+
 To run the program, Java 5 or later is required. Use this command to execute the application:
 
 ```
